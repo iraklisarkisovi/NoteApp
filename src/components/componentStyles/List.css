@@ -1,0 +1,53 @@
+.noteList {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.listTitle {
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.NoteDiv {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.noteAuthor {
+  font-size: 16px;
+  font-weight: 700;
+  color: #6e00fd;
+}
+
+.noteText {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.noteRating {
+  align-self: flex-start;
+  margin-top: 6px;
+
+  background: linear-gradient(135deg, #6e00fd, #c200fd);
+  color: white;
+
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}

@@ -1,0 +1,14 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.parentdiv {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(#c200fd, #6e00fd);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
