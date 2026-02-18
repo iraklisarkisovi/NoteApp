@@ -1,18 +1,18 @@
 .page {
-  min-height: 100vh;
+  min-height: fit-content;
   width: 100%;
-  background: linear-gradient(135deg, #c200fd, #6e00fd);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px 16px;
   box-sizing: border-box;
+  font-size: medium;
+  font-weight: 300;
 }
 
 .parentFlex {
   width: 100%;
   max-width: 420px;
-  background: #ffffff;
   border-radius: 16px;
   padding: 24px;
 
@@ -25,14 +25,12 @@
 
 .parentFlex input,
 .parentFlex textarea {
-  width: 400px;
+  width: 350px;
   padding: 12px 14px;
   font-size: 14px;
-
   border-radius: 10px;
   border: 1px solid #ddd;
   outline: none;
-
   transition: border 0.2s, box-shadow 0.2s;
 }
 

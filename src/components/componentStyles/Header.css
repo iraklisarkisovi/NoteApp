@@ -1,0 +1,54 @@
+.Header {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-bottom: 200px;
+  padding: 30px 20px;  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: black;
+  background-color: lightgray;
+  backdrop-filter: blur(6px);  
+  border-radius: 16px;
+}
+
+.HeaderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.HeaderLeft h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.HeaderLeft p {
+  font-size: 14px;
+  color: lightslategray;
+  margin: 0;
+}
+
+.CreateBtn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #6e00fd, #c200fd);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.CreateBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(110, 0, 253, 0.35);
+}
+
+.CreateBtn:active {
+  transform: scale(0.97);
+}
