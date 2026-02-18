@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import "./componentStyles/Header.css"
 
 interface IProps{
@@ -7,12 +8,14 @@ interface IProps{
 const Header = ({CloseModal}: IProps) => {
   return (
     <header className="Header">
-      <div className="HeaderLeft">
-        <h2>Note App</h2>
-        <p>Create notes here!</p>
-      </div>
+      <Link to={".."}>
+        <div className="HeaderLeft">
+          <h2>Note App</h2>
+          <p>Create notes here!</p>
+        </div>
+      </Link>
 
-      <button className="CreateBtn" onClick={() => CloseModal()}>+ Create</button>
+      <Link to={"/create-notes"} className="CreateBtn" onClick={() => CloseModal()}>+ Create</Link>
     </header>
   );
 };

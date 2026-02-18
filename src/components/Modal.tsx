@@ -1,10 +1,16 @@
 import "./componentStyles/Modal.css"
+import { useNavigate } from "react-router"
 type ILayoutProp = {
     children?: React.ReactNode
-    CloseModal: () => void
 }
 
-export const Modal = ({children, CloseModal}: ILayoutProp) => {
+export const Modal = ({children}: ILayoutProp) => {
+    const Navigate = useNavigate()
+    
+    const CloseModal = () => {
+        Navigate("/")
+    }
+
     return (
         <>
             <div className="divplaceholder" onClick={() => CloseModal()}/>
