@@ -29,3 +29,23 @@ export const PostNotes = async (body: INotes) => {
     }
 }
 
+export const DeletePost =  async (id: string) => {
+    try{
+        const res = await fetch(`http://localhost:8080/posts/${id}`, {
+            method: "DELETE",
+            body: JSON.stringify(id)
+        })
+
+        if(!res.ok){
+            console.log("Request not sent")
+        }else{
+            console.log("Request sent successfully");
+        }
+        
+        return res.json;
+    }catch(err) {
+        console.error(err);
+        throw err
+    }
+}
+

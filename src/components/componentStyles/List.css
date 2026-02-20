@@ -1,8 +1,8 @@
 .noteList {
   width: 100%;
   max-width: 600px;
-  margin-top: 32px;
-
+  margin-top: 20%;
+  margin-bottom: 10%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -19,11 +19,9 @@
   background: #ffffff;
   border-radius: 14px;
   padding: 20px;
-
   display: flex;
   flex-direction: column;
   gap: 8px;
-
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
@@ -39,15 +37,53 @@
   line-height: 1.5;
 }
 
+.InfoDiv{
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-between;
+}
+
 .noteRating {
   align-self: flex-start;
   margin-top: 6px;
-
   background: linear-gradient(135deg, #6e00fd, #c200fd);
   color: white;
-
   padding: 4px 10px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
+}
+
+.ButtonS {
+  background: linear-gradient(135deg, #6e00fd, #c200fd);
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(110, 0, 253, 0.35);
+}
+
+.ButtonS:hover {
+  background: linear-gradient(135deg, #c200fd, #6e00fd);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(194, 0, 253, 0.45);
+}
+
+.ButtonS:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(110, 0, 253, 0.3);
+}
+
+.InnerDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-around;
 }

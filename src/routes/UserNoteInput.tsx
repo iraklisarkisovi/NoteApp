@@ -1,9 +1,8 @@
-import { useState } from "react";
 import { Modal } from "../components/Modal"
 import type { INotes } from "../components/UserNoteList"
 import "../components/componentStyles/Input.css"
 import { PostNotes } from "../Api Requests/requests";
-import { Form, redirect, useNavigate, type ActionFunctionArgs } from "react-router";
+import { Form, redirect, type ActionFunctionArgs } from "react-router";
 
 // interface IProps {
 //     submit: (e: React.FormEvent) => void
@@ -17,9 +16,10 @@ import { Form, redirect, useNavigate, type ActionFunctionArgs } from "react-rout
 export const UserNoteInput = () => {
     return(
         <Modal>
-            <h2 className="modalTitle">Input your Note</h2>
 
             <Form method="post" className="parentFlex modalForm">
+                <h2 className="modalTitle">Input your Note</h2>
+
                 <input
                     type="text"
                     placeholder="Author"

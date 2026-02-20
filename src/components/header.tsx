@@ -8,7 +8,7 @@ interface IProps{
 const Header = ({CloseModal}: IProps) => {
   return (
     <header className="Header">
-      <Link to={".."}>
+      <Link className={"LinkS"} to={".."}>
         <div className="HeaderLeft">
           <h2>Note App</h2>
           <p>Create notes here!</p>

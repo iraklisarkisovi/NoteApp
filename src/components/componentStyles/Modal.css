@@ -10,14 +10,15 @@
   position: fixed;
   inset: 0;
   margin: auto;
-
-  width: 90%;
-  max-width: 420px;
-  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 90%;
+  max-width: 420px; */
+  /* padding: 24px; */
 
   border: none;
   border-radius: 16px;
-  background: #ffffff;
 
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
 

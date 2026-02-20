@@ -28,6 +28,23 @@ app.get('/posts/:id', async (req, res) => {
   res.json({ post });
 });
 
+app.delete('/posts/:id', async (req, res) => {
+  const storedPosts = await getStoredPosts();
+
+  const filteredPosts = storedPosts.filter(
+    (post) => post.id !== req.params.id
+  );
+
+  if (filteredPosts.length === storedPosts.length) {
+    return res
+      .status(404)
+      .json({ message: 'Note with this id was not found' });
+  }
+  await storePosts(filteredPosts);
+
+  res.status(200).json({ message: 'Note deleted successfully' });
+});
+
 app.post('/posts', async (req, res) => {
   const existingPosts = await getStoredPosts();
   const postData = req.body;
