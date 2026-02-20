@@ -1,14 +1,21 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+// const express = require('express');
+import express from "express"
+// const bodyParser = require('body-parser');
+import bodyParser from "body-parser";
 import cors from "cors"
 
-const { getStoredPosts, storePosts } = require('./data/posts');
+import { getStoredPosts, storePosts } from './data/posts.js';
 
 const app = express();
-app.use(cors({
-  origin: "http://localhost:5173/",
-  methods: ["GET", "POST", "DELETE"]
-}))
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -32,21 +39,30 @@ app.get('/posts/:id', async (req, res) => {
   res.json({ post });
 });
 
-app.delete('/posts/:id', async (req, res) => {
-  const storedPosts = await getStoredPosts();
+app.delete("/posts/:id", async (req, res) => {
+  try {
+    const storedPosts = await getStoredPosts();
 
-  const filteredPosts = storedPosts.filter(
-    (post) => post.id !== req.params.id
-  );
+    const filteredPosts = storedPosts.filter(
+      (post) => post.id !== req.params.id
+    );
 
-  if (filteredPosts.length === storedPosts.length) {
-    return res
-      .status(404)
-      .json({ message: 'Note with this id was not found' });
+    if (filteredPosts.length === storedPosts.length) {
+      return res.status(404).json({
+        message: "Note with this id was not found",
+      });
+    }
+
+    await storePosts(filteredPosts);
+
+    return res.status(200).json({
+      message: "Note deleted successfully",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Failed to delete note",
+    });
   }
-  await storePosts(filteredPosts);
-
-  res.status(200).json({ message: 'Note deleted successfully' });
 });
 
 app.post('/posts', async (req, res) => {

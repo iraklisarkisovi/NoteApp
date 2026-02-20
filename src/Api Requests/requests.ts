@@ -33,7 +33,6 @@ export const DeletePost =  async (id: string) => {
     try{
         const res = await fetch(`http://localhost:8080/posts/${id}`, {
             method: "DELETE",
-            body: JSON.stringify(id)
         })
 
         if(!res.ok){
@@ -41,14 +40,9 @@ export const DeletePost =  async (id: string) => {
         }else{
             console.log("Request sent successfully");
         }
-
-        return res.json;
+        return res.json();
     }catch(err) {
         console.error(err);
-
-
-
-        
         throw err
     }
 }
