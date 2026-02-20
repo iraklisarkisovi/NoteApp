@@ -41,10 +41,14 @@ export const DeletePost =  async (id: string) => {
         }else{
             console.log("Request sent successfully");
         }
-        
+
         return res.json;
     }catch(err) {
         console.error(err);
+
+
+
+        
         throw err
     }
 }

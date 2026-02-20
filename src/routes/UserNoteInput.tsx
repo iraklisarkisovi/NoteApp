@@ -3,6 +3,9 @@ import type { INotes } from "../components/UserNoteList"
 import "../components/componentStyles/Input.css"
 import { PostNotes } from "../Api Requests/requests";
 import { Form, redirect, type ActionFunctionArgs } from "react-router";
+import { useContext } from "react";
+import { ContextStore } from "../store/ContextStore";
+// import { useIsData } from "../store/ContextStore";
 
 // interface IProps {
 //     submit: (e: React.FormEvent) => void
@@ -14,18 +17,17 @@ import { Form, redirect, type ActionFunctionArgs } from "react-router";
 
 
 export const UserNoteInput = () => {
+    const context = useContext(ContextStore)
+
     return(
         <Modal>
-
-            <Form method="post" className="parentFlex modalForm">
+            <Form onSubmit={() => context?.UpdateIsData()} method="post" className="parentFlex modalForm">
                 <h2 className="modalTitle">Input your Note</h2>
-
                 <input
                     type="text"
                     placeholder="Author"
                     name="author"
                 />
-
                 <textarea
                     placeholder="Note"
                     name="body"

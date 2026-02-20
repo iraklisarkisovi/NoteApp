@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./componentStyles/List.css"
 import { DeletePost, GetPosts } from "../Api Requests/requests";
+import { ContextStore } from "../store/ContextStore";
+import { useLoaderData, type LoaderFunction } from "react-router";
 
 export interface INotes {
     author: string,
@@ -9,16 +11,15 @@ export interface INotes {
     id?: string
 }   
 
-const UserNoteList = () => {
-    const [notes, setNotes] = useState<INotes[]>([]);
+export const GetData: LoaderFunction = async () => {
+    const res = await GetPosts()
+    const data = res
+    return data.posts as INotes[]
+}
 
-    useEffect(() => {
-        const GetData = async () => {
-            const res = await GetPosts()
-            setNotes(res.posts)
-        }
-        GetData()
-    }, [])
+const UserNoteList = () => {
+    const notes = useLoaderData() as INotes[]
+    // const context = useContext(ContextStore)
     
     return (
         <>
@@ -37,10 +38,11 @@ const UserNoteList = () => {
                         </div>
                     </div>
                 ))}
-
             </div>
         </> 
     );
 };
 
 export default UserNoteList;
+
+

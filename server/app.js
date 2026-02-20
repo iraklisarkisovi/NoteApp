@@ -1,10 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+import cors from "cors"
 
 const { getStoredPosts, storePosts } = require('./data/posts');
 
 const app = express();
-
+app.use(cors({
+  origin: "http://localhost:5173/",
+  methods: ["GET", "POST", "DELETE"]
+}))
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
