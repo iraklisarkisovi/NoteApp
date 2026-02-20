@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import ParentRoute from './routes/ParentRoute'
-import { UserNoteInput } from './routes/UserNoteInput'
+import { handleSubmit, UserNoteInput } from './routes/UserNoteInput'
 import App from './routes/Pages'
 
 const router = createBrowserRouter([
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <App />,
-        children: [{path: "/create-notes", element: <UserNoteInput/>}]
+        children: [{path: "/create-notes", action: handleSubmit, element: <UserNoteInput/>}]
       }
     ]
   }

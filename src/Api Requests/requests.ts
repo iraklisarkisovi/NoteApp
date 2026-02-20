@@ -1,8 +1,8 @@
 import type { INotes } from "../components/UserNoteList"
 
-interface IRes {
-    posts: [{body: string, id: string, rating: string, author:string}]
-}
+// interface IRes {
+//     posts: [{body: string, id: string, rating: string, author:string}]
+// }
 
 export const GetPosts = async () => {
     try{
@@ -28,3 +28,4 @@ export const PostNotes = async (body: INotes) => {
         throw err
     }
 }
+

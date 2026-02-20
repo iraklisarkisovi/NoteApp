@@ -3,7 +3,7 @@ import { Modal } from "../components/Modal"
 import type { INotes } from "../components/UserNoteList"
 import "../components/componentStyles/Input.css"
 import { PostNotes } from "../Api Requests/requests";
-import { useNavigate } from "react-router";
+import { Form, redirect, useNavigate, type ActionFunctionArgs } from "react-router";
 
 // interface IProps {
 //     submit: (e: React.FormEvent) => void
@@ -15,47 +15,35 @@ import { useNavigate } from "react-router";
 
 
 export const UserNoteInput = () => {
-    const navigate = useNavigate()
-    const [note, setNote] = useState<INotes>({
-        author: "",
-        body: "",
-        rating: 0
-    });
-
-    const onChange = (input: string, type: "author" | "body") => {
-        setNote((prev) => ({ ...prev, [type]: input }));
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault(); 
-        const res = await PostNotes(note)
-        setNote({ author: "", body: "", rating: 0 });
-        navigate("..")
-        return res.json()
-    };
-
     return(
         <Modal>
             <h2 className="modalTitle">Input your Note</h2>
 
-            <form onSubmit={handleSubmit} className="parentFlex modalForm">
+            <Form method="post" className="parentFlex modalForm">
                 <input
                     type="text"
                     placeholder="Author"
-                    value={note.author}
-                    onChange={(e) => onChange(e.target.value, "author")}
+                    name="author"
                 />
 
                 <textarea
                     placeholder="Note"
-                    value={note.body}
-                    onChange={(e) => onChange(e.target.value, "body")}
+                    name="body"
                 />
-
-                <p className="preview">{note.author}</p>
-
                 <button type="submit">Post</button>
-            </form>
+            </Form>
         </Modal>
     );
 }
+
+export const handleSubmit = async ({request}: ActionFunctionArgs) => {
+    const postData = await request.formData()
+    const noteData: INotes = {
+        author: String(postData.get("author") ?? ""),
+        body: String(postData.get("body") ?? ""),
+        rating: Number(postData.get("rating") ?? 0),
+    };
+    console.log(noteData);
+    await PostNotes(noteData)
+    return redirect("/")
+};
