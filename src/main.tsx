@@ -6,6 +6,7 @@ import { handleSubmit, UserNoteInput } from './routes/UserNoteInput'
 import App from './routes/Pages'
 import { IsDataStoreProvider } from './store/ContextStore'
 import { GetData } from './components/UserNoteList'
+import Note, { NoteReq } from './routes/DynamicNote'
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
         children: [{path: "/create-notes", action: handleSubmit, element: <UserNoteInput/>}]
       }
     ]
-  }
+  },
+  {path: "/:id", loader: NoteReq, element: <Note/>}
 ])
 
 createRoot(document.getElementById('root')!).render(

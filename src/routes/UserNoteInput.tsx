@@ -45,7 +45,6 @@ export const handleSubmit = async ({request}: ActionFunctionArgs) => {
         body: String(postData.get("body") ?? ""),
         rating: Number(postData.get("rating") ?? 0),
     };
-    console.log(noteData);
     await PostNotes(noteData)
     return redirect("/")
 };

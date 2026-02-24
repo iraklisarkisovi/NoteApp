@@ -12,3 +12,12 @@ body{
   align-items: center;
   justify-content: center;
 }
+
+.content{
+  width: 90vh;
+  height: auto;
+  background:  linear-gradient(#b7b7b7, #fff);
+  border-radius: 10px;
+  padding: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

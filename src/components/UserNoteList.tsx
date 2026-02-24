@@ -1,8 +1,6 @@
-import { useContext, useEffect, useState } from "react";
 import "./componentStyles/List.css"
 import { DeletePost, GetPosts } from "../Api Requests/requests";
-import { ContextStore } from "../store/ContextStore";
-import { useLoaderData, type LoaderFunction } from "react-router";
+import { Link, useLoaderData, type LoaderFunction } from "react-router";
 
 export interface INotes {
     author: string,
@@ -19,8 +17,6 @@ export const GetData: LoaderFunction = async () => {
 
 const UserNoteList = () => {
     const notes = useLoaderData() as INotes[]
-    // const context = useContext(ContextStore)
-    
     return (
         <>
             <div className="noteList">
@@ -34,6 +30,8 @@ const UserNoteList = () => {
                                 <p className="noteText">{body}</p>
                                 <span className="noteRating">⭐ {rating}</span>   
                             </div>
+                            <Link to={`/${id}`} className="ButtonS">Note details</Link>
+
                             <button className="ButtonS" onClick={() => DeletePost(String(id))}>Delete Note</button>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ import type { INotes } from "../components/UserNoteList"
 
 export const GetPosts = async () => {
     try{
-        const res  = await fetch("http://localhost:8080/posts")
+        const res = await fetch("http://localhost:8080/posts")
         return res.json()
     }catch(err){
         console.error(err)
@@ -43,6 +43,17 @@ export const DeletePost =  async (id: string) => {
         return res.json();
     }catch(err) {
         console.error(err);
+        throw err
+    }
+}
+
+
+export const GetNote = async (id: string | undefined) => {
+    try{
+        const res = await fetch(`http://localhost:8080/posts/${id}`)
+        return res.json()
+    }catch(err){
+        console.log(err)
         throw err
     }
 }
